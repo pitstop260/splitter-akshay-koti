@@ -1,0 +1,393 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Space Mono", monospace;
+}
+
+main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main::before {
+  content: "SPLI\00000aTTER";
+  white-space: pre;
+  letter-spacing: 10px;
+  font-weight: 700;
+  font-size: 20px;
+  color: hsl(183, 100%, 15%);
+  position: absolute;
+  top: 40px;
+}
+
+.card1 {
+  height: 100vh;
+  width: 100%;
+  background-color: hsl(185, 41%, 84%);
+  display: flex;
+  justify-content: center;
+}
+
+.calculator {
+  background-color: hsl(0, 0%, 100%);
+  height: 100vh;
+  width: 100%;
+  border-radius: 5% 5% 0 0;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  margin-top: 140px;
+}
+
+input,
+label {
+  display: block;
+  font-weight: bold;
+}
+
+label {
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  background-color: hsl(185, 41%, 90%);
+  padding-right: 5px;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.right {
+  text-align: right;
+}
+
+.selector {
+  margin: 30px;
+}
+
+.selector label {
+  color: hsl(183, 100%, 25%);
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.buttons input {
+  padding-left: 15px;
+  width: 48%;
+  height: 40px;
+  text-align: center;
+}
+
+.buttons button {
+  cursor: pointer;
+  width: 48%;
+  height: 40px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: hsl(183, 100%, 15%);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.buttons button:hover {
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.buttons button:active {
+  transform: translateY(2px);
+}
+
+.buttons button:nth-child(3) {
+  background-color: lightsalmon;
+  color: hsl(183, 100%, 15%);
+}
+
+.buttons button:nth-child(3):hover {
+  background-color: rgb(253, 138, 92);
+}
+
+.buttons button:nth-child(3):active {
+  background-color: rgb(253, 138, 92);
+}
+
+.buttons button:nth-child(6) {
+  background-color: hsl(185, 41%, 90%);
+  color: hsl(183, 100%, 15%);
+}
+
+.display {
+  background-color: hsl(183, 100%, 15%);
+  margin: 30px;
+  padding: 10px;
+  color: hsl(0, 0%, 100%);
+  border-radius: 10px;
+}
+
+.adjust {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tip,
+.total {
+  padding-top: 3px;
+  display: inline-block;
+  width: 150px;
+  direction: rtl;
+  font-size: 25px;
+  font-weight: bold;
+  color: lightsalmon;
+}
+
+.display button {
+  cursor: pointer;
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background: lightsalmon;
+  color: hsl(183, 100%, 15%);
+  font-weight: bold;
+}
+
+.display label::after {
+  content: "\00000a/ Person";
+  white-space: pre;
+  font-size: 12px;
+  font-weight: bold;
+  color: lightsalmon;
+}
+
+.reset {
+  box-shadow: 0 3px #999;
+}
+
+.reset:hover {
+  background-color: rgb(253, 138, 92);
+}
+
+.reset:active {
+  background-color: rgb(253, 138, 92);
+  box-shadow: 0 2px #666;
+  transform: translateY(2px);
+}
+
+.attribution {
+  margin-top: 150px;
+  text-align: center;
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-container i {
+  position: absolute;
+  height: 23px;
+  width: 25px;
+  left: 0.5px;
+  padding: 0 5px 0 5px;
+  top: 10px;
+  background-color: hsl(185, 41%, 90%);
+  color: hsl(183, 100%, 35%);
+}
+
+.error1 {
+  animation: shake 0.2s ease-in-out 0s 2 forwards;
+}
+
+@keyframes shake {
+  0% {
+    margin-left: 0rem;
+  }
+  25% {
+    margin-left: 0.5rem;
+  }
+  75% {
+    margin-left: -0.5rem;
+  }
+  100% {
+    margin-left: 0rem;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  /* main {
+    border: 5px solid black;
+  } */
+  main::before {
+    top: 70px;
+  }
+  label {
+    margin-bottom: 2px;
+  }
+  input {
+    margin-bottom: 5px;
+  }
+  .buttons {
+    margin-bottom: 0px;
+  }
+  .adjust {
+    display: block;
+  }
+  .card1 {
+    align-items: center;
+    height: 80vh;
+    width: 90%;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  .calculator {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-height: 65%;
+    width: 70%;
+    margin-bottom: 90px;
+    border-radius: 20px;
+  }
+  .selector {
+    margin-top: 100px;
+    padding: 10px;
+    height: 350px;
+    width: 50%;
+  }
+  .buttons button {
+    width: 32%;
+    height: 40px;
+  }
+  .display {
+    height: 250px;
+    width: 50%;
+  }
+  .adjust {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+  .adjust label {
+    width: 60px;
+    /* border: 1px solid white; */
+  }
+  .display button {
+    margin-top: 40px;
+  }
+  .top {
+    margin-top: 20px;
+  }
+  .buttons input {
+    width: 32%;
+  }
+  .attribution {
+    width: 100%;
+    position: absolute;
+    bottom: 3%;
+  }
+}
+
+@media screen and (min-height: 496px) {
+  .calculator {
+    height: 10px;
+  }
+}
+
+@media screen and (min-height: 320px) {
+  .calculator {
+    height: 200vh;
+    margin-top: 140px;
+  }
+  .attribution {
+    margin-top: 460px;
+  }
+}
+
+@media screen and (min-height: 533px) {
+  .calculator {
+    height: 122vh;
+    margin-top: 140px;
+  }
+  .attribution {
+    margin-top: 260px;
+  }
+}
+
+@media screen and (min-height: 568px) {
+  .calculator {
+    height: 115vh;
+    margin-top: 140px;
+  }
+  .attribution {
+    margin-top: 230px;
+  }
+}
+
+@media screen and (min-height: 640px) {
+  .calculator {
+    height: 100vh;
+    margin-top: 140px;
+  }
+  .attribution {
+    margin-top: 150px;
+  }
+}
+
+@media screen and (min-height: 667px) {
+  .calculator {
+    height: 95vh;
+  }
+  .attribution {
+    margin-top: 110px;
+  }
+}
+
+@media screen and (min-height: 731px) {
+  .calculator {
+    height: 85vh;
+    margin-top: 140px;
+  }
+  .attribution {
+    margin-top: 27px;
+  }
+}
+
+@media screen and (min-height: 812px) {
+  .selector {
+    margin-top: 65px;
+  }
+}
+
+@media screen and (min-height: 823px) {
+  .selector {
+    margin-top: 55px;
+  }
+  .calculator {
+    height: 83vh;
+    margin-top: 140px;
+  }
+  .attribution {
+    margin-top: 5px;
+  }
+}
+
+@media screen and (min-height: 1024px) {
+  .calculator {
+    height: 84vh;
+    margin-top: 140px;
+  }
+  .attribution {
+    margin-top: -20px;
+  }
+}
