@@ -1,13 +1,7 @@
 "use strict";
 
 function noNegative(e) {
-  if (
-    !(
-      (e.keyCode > 95 && e.keyCode < 106) ||
-      (e.keyCode > 47 && e.keyCode < 58) ||
-      e.keyCode == 8
-    )
-  ) {
+  if (e.keyCode == 189) {
     return false;
   }
 }
@@ -28,6 +22,16 @@ input3.onkeydown = noNegative;
 
 function validate() {
   if (input3.value.trim() == "") {
+    if (input2.value.trim() == "") {
+      input2.classList.add("error1");
+      icon1.classList.add("error1");
+
+      setTimeout(function () {
+        input2.classList.remove("error1");
+        icon1.classList.remove("error1");
+      }, 300);
+    }
+
     input3.classList.add("error1");
     icon2.classList.add("error1");
 
@@ -38,6 +42,16 @@ function validate() {
   }
 
   if (input2.value.trim() == "") {
+    if (input3.value.trim() == "") {
+      input3.classList.add("error1");
+      icon2.classList.add("error1");
+
+      setTimeout(function () {
+        input3.classList.remove("error1");
+        icon2.classList.remove("error1");
+      }, 300);
+    }
+
     input2.classList.add("error1");
     icon1.classList.add("error1");
 
@@ -49,9 +63,7 @@ function validate() {
 }
 
 const calculator = (button) => {
-  if (input3.value.trim() === "") {
-    validate();
-  } else if (input2.value.trim() === "") {
+  if (input3.value.trim() === "" || input2.value.trim() === "") {
     validate();
   } else {
     let totalTip =
@@ -62,10 +74,24 @@ const calculator = (button) => {
             Number(button.textContent.replaceAll("%", ""))) /
           100;
     let totalPeople = Number(input2.value);
-    tip.textContent = `$${totalTip / totalPeople}`;
-    total.textContent = `$${(totalTip + Number(input3.value)) / totalPeople}`;
+    tip.textContent = `$${
+      Math.round((totalTip / totalPeople + Number.EPSILON) * 100) / 100
+    }`;
+    total.textContent = `$${
+      Math.round(
+        ((totalTip + Number(input3.value)) / totalPeople + Number.EPSILON) * 100
+      ) / 100
+    }`;
   }
 };
+
+function noInfinity() {
+  input2.value = "";
+  document.querySelector(".no-zero").style.display = "block";
+  setTimeout(function () {
+    document.querySelector(".no-zero").style.display = "none";
+  }, 1000);
+}
 
 tipButton.forEach((button) => {
   button.addEventListener("click", () => {
@@ -75,8 +101,34 @@ tipButton.forEach((button) => {
 
 percentage.addEventListener("keyup", function (e) {
   if (e.key === "Enter") {
-    console.log(percentage.value);
-    calculator(percentage);
+    if (percentage.value === "") {
+      noInfinity();
+      percentage.value = "0";
+    } else if (input2.value === "0") {
+      noInfinity();
+    } else calculator(percentage);
+  }
+});
+
+input2.addEventListener("keyup", function (e) {
+  if (e.key === "Enter") {
+    if (percentage.value === "" && input3.value === "") {
+      noInfinity();
+      validate();
+    } else if (input2.value === "0") {
+      noInfinity();
+    } else calculator(percentage);
+  }
+});
+
+input3.addEventListener("keyup", function (e) {
+  if (e.key === "Enter") {
+    if (percentage.value === "" && input2.value === "") {
+      noInfinity();
+      validate();
+    } else if (input2.value === "0") {
+      noInfinity();
+    } else calculator(percentage);
   }
 });
 
@@ -87,3 +139,4 @@ document.querySelector(".reset").addEventListener("click", function () {
   tip.textContent = "$0";
   total.textContent = "$0";
 });
+
