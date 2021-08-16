@@ -28,19 +28,18 @@
       <div class="card1">
         <div class="calculator">
           <div class="selector">
-            <label>Bill</label>
+            <label for="bill">Bill</label>
             <div class="input-container">
               <i class="fas fa-dollar-sign"></i>
               <input type="number" id="bill" class="right" min="0" />
             </div>
-            <label>Select Tip %</label>
+            <label for="percentage">Select Tip %</label>
             <div class="buttons">
               <button class="b">5%</button>
               <button class="b">10%</button>
               <button class="b">15%</button>
               <button class="b">25%</button>
               <button class="b">50%</button>
-              <!-- <button>Custom</button> -->
               <input
                 type="number"
                 min="0"
@@ -48,7 +47,10 @@
                 id="percentage"
               />
             </div>
-            <label id="people">Number of People</label>
+            <div class="adjust2">
+              <label id="people" for="people1">Number of People</label>
+              <div class="no-zero">Can't be zero</div>
+            </div>
             <div class="input-container">
               <i class="fas fa-user"></i>
               <input type="number" id="people1" class="right" min="1" />
@@ -57,10 +59,12 @@
           <div class="display">
             <div>
               <div class="adjust">
-                <label>Tip Amount</label><span class="tip">$0</span>
+                <p>Tip Amount</p>
+                <span class="tip">$0</span>
               </div>
               <div class="adjust top">
-                <label>Total </label><span class="total">$0</span>
+                <p>Total</p>
+                <span class="total">$0</span>
               </div>
               <button class="reset">RESET</button>
             </div>
