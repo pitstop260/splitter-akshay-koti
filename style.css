@@ -5,6 +5,15 @@
   font-family: "Space Mono", monospace;
 }
 
+body {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 main {
   height: 100vh;
   display: flex;
@@ -46,6 +55,14 @@ label {
   font-weight: bold;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
 label {
   margin-bottom: 10px;
 }
@@ -81,7 +98,7 @@ input {
 }
 
 .buttons input {
-  padding-left: 15px;
+  padding-left: 8px;
   width: 48%;
   height: 40px;
   text-align: center;
@@ -104,18 +121,14 @@ input {
   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
     rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
     rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  background-color: rgb(253, 138, 92);
 }
 
 .buttons button:active {
   transform: translateY(2px);
 }
 
-.buttons button:nth-child(3) {
-  background-color: lightsalmon;
-  color: hsl(183, 100%, 15%);
-}
-
-.buttons button:nth-child(3):hover {
+.buttons button:focus {
   background-color: rgb(253, 138, 92);
 }
 
@@ -163,7 +176,13 @@ input {
   font-weight: bold;
 }
 
-.display label::after {
+.display p {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.display p::after {
   content: "\00000a/ Person";
   white-space: pre;
   font-size: 12px;
@@ -183,6 +202,17 @@ input {
   background-color: rgb(253, 138, 92);
   box-shadow: 0 2px #666;
   transform: translateY(2px);
+}
+
+.adjust2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.no-zero {
+  display: none;
+  color: lightsalmon;
+  font-weight: bold;
 }
 
 .attribution {
