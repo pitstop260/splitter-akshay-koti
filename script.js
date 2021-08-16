@@ -65,6 +65,8 @@ function validate() {
 const calculator = (button) => {
   if (input3.value.trim() === "" || input2.value.trim() === "") {
     validate();
+  } else if (input2.value === "0") {
+    noInfinity();
   } else {
     let totalTip =
       button === percentage
